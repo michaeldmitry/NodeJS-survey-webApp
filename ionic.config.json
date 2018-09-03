@@ -1,0 +1,7 @@
+{
+  "name": "serveBetter",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
