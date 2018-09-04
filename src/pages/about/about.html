@@ -1,11 +1,50 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      My Events
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
+    <!-- <ion-list>
 
+        <ion-item-sliding #item *ngFor="let event of myEventList ; let i =index">
+          <ion-item *ngIf="event.picked==true">
+            <ion-item>
+                <ion-label>
+                    <h3 item-start>{{event.name}}</h3>
+                    <h3 item-end>{{info[i].phone}}</h3>
+                </ion-label>
+                <div item-content>
+                    <p>{{event.location}}</p>
+                    <p>{{event.date}}</p>
+                    <p>{{pending.time}}</p>
+                </div>
+            </ion-item>
+            <ion-item-options side="left">
+                <button ion-button color="danger" (click)="deleteTransaction(i)"></button>
+            </ion-item-options>
+
+            <ion-item-options side="right">
+                <button class="ApproveButton" ion-button (click)="changePendingStatus(i)"></button>
+            </ion-item-options>
+          </ion-item>
+        </ion-item-sliding>
+    </ion-list> -->
+    <ion-list>
+        <ion-item *ngFor="let event of myEventList | async" >
+          <ion-item *ngIf="event.picked==false">
+          <ion-thumbnail item-left>
+              <img [src]="event.image">
+              
+          </ion-thumbnail>
+          <p text-wrap> <b> {{ event.name }} </b></p>
+          
+          <ion-note> <p> {{ event.location }} </p> </ion-note>
+          <ion-note> <p>{{ event.date }}</p></ion-note>
+          <ion-note><p>{{ event.time }}</p></ion-note>
+        </ion-item>
+        </ion-item>
+      </ion-list>
 </ion-content>
