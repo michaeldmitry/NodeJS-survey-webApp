@@ -18,6 +18,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import {MyEventsPage} from '../pages/my-events/my-events';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
+import {CreatePage} from '../pages/create/create';
+import {CreatePageModule} from '../pages/create/create.module';
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyCS2Uehu5QaikEKWRtpv__Z05Dq6oEbiXA",
@@ -35,7 +37,8 @@ var config = {
     HomePage,
     TabsPage,
     LoginPage,
-    MyEventsPage
+    MyEventsPage,
+   // CreatePage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,9 @@ var config = {
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    CreatePageModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -54,7 +59,7 @@ var config = {
     HomePage,
     TabsPage,
     LoginPage,
-    MyEventsPage
+    MyEventsPage,
   ],
   providers: [
     StatusBar,

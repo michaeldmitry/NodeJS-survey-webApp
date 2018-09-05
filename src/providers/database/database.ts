@@ -19,6 +19,19 @@ export class DatabaseProvider {
   constructor(public firestore: AngularFirestore) {
     console.log('Hello DatabaseProvider Provider');
   }
+  createEvent(name:String, location:string,image:string,date:string,time:string,id:string): Promise<void>{
+    
+    return this.firestore.collection('events').doc(id).set({
+      name:name,
+      date:date,
+      done:false,
+      id:id,
+      image:image,
+      location:location,
+      time:time,
+      user:""
+    })
+  }
 
   getEventsList():AngularFirestoreCollection<Event>{
   

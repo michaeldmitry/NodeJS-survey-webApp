@@ -6,6 +6,8 @@ import {DatabaseProvider} from '../../providers/database/database';
 import {Event} from '../../models/event.interface';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { LoadingController, AlertController } from 'ionic-angular';
+import {CreatePage} from '../../pages/create/create';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -37,5 +39,9 @@ public eventList:Observable<Event[]>;
           user:this.userId
       },
     {merge:true})
+    }
+
+    goToCreatePage(): void {
+      this.navCtrl.push('CreatePage');
     }
   }
