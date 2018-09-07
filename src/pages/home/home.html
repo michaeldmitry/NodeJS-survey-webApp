@@ -10,9 +10,10 @@
 </ion-header>
 
 <ion-content >
+    <p>{{userId}}</p>
   <ion-list>
     <ion-item *ngFor="let event of eventList | async" (click)="pickSlot(event.id)">
-      <ion-item *ngIf="event.user==''">   <!--Display only the events that are not assigned to any user-->
+      <!-- <ion-item *ngIf="event.user==''">   Display only the events that are not assigned to any user -->
       <ion-thumbnail item-left>
           <img [src]="event.image">
           
@@ -22,7 +23,7 @@
       <ion-note> <p> {{ event.location }} </p> </ion-note>
       <ion-note> <p>{{ event.date }}</p></ion-note>
       <ion-note><p>{{ event.time }}</p></ion-note>
-    </ion-item>
+    <!-- </ion-item> -->
     </ion-item>
   </ion-list>
 </ion-content>

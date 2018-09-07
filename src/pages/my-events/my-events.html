@@ -1,60 +1,34 @@
 <ion-header>
     <ion-navbar color="primary">
-      <ion-title>
-        My Events
-      </ion-title>
+        <ion-title>
+            My Events
+        </ion-title>
     </ion-navbar>
-  </ion-header>
-  
-  <ion-content >
-      <ion-list>
+</ion-header>
 
-          <ion-item-sliding #item *ngFor="let event of myEvents|async">
-              
+<ion-content>
+    <ion-list>
 
-              <ion-item *ngIf="event.user==userId &&event.done==false"> <!-- show only the events that are assigned to that user and the uncompleted ones -->
-                  <ion-label>
-                      <h3 item-start>{{event.name}}</h3>
-                      <h3 item-end><p>{{event.location}}</p>
+        <ion-item-sliding #item *ngFor="let event of myEvents | async">
+            <ion-item *ngIf="event.user == userId && event.done == false">
+                <!-- show only the events that are assigned to that user and the uncompleted ones -->
+                <ion-label>
+                    <h3 item-start>{{event.name}}</h3>
+                    <h3 item-end>
+                        <p>{{event.location}}</p>
                         <p>{{event.date}}</p>
-                        <p>{{event.time}}</p></h3>
-                  </ion-label>
-                  
-              </ion-item>
-              <ion-item-options side="left">
-                  <button ion-button color="danger" (click)="notYet(event.id)">
-                      Undone
-                  </button>
-              </ion-item-options>
-  
-              <ion-item-options side="right">
-                  <button class="ApproveButton" ion-button (click)="finished(event.id)"> Done</button>
-              </ion-item-options>
-          </ion-item-sliding>
-      </ion-list>
-
-     
-  </ion-content>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        <p>{{event.time}}</p>
+                    </h3>
+                </ion-label>
+            </ion-item>
+            <ion-item-options side="left">
+                <button ion-button color="danger" (click)="notYet(event.id)">
+                    Undone
+                </button>
+            </ion-item-options>
+            <ion-item-options side="right">
+                <button class="ApproveButton" ion-button (click)="finished(event.id)"> Done</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>
