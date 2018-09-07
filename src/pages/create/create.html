@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Create</ion-title>
+      <ion-title>Create</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,48 +15,58 @@
 
 <ion-content padding>
   <form [formGroup]="createEventForm" (submit)="createEvent()" novalidate>
-    <!-- <ion-item (click)="takeImage()">
-        <ion-icon name="camera"></ion-icon>
-        <img [src]="snagImageURL" *ngIf="snagImageURL"/>
-    </ion-item> -->
+      <!-- <ion-item (click)="takeImage()">
+      <ion-icon name="camera"></ion-icon>
+      <img [src]="snagImageURL" *ngIf="snagImageURL"/>
+  </ion-item> -->
 
-    <ion-item>
-      <ion-label stacked>Name</ion-label>
-      <ion-input formControlName="name" type="text" placeholder="e.g:McDonald's">
-      </ion-input>
-    </ion-item>
+      <ion-item>
+          <ion-label stacked>Name</ion-label>
+          <ion-select (ionChange)="pickLocation()" [(ngModel)]="restaurant" formControlName="name" >
+            <ion-option *ngFor="let location of locationsList |async" value="{{location.name}}">{{location.name}}</ion-option>
+          </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Location</ion-label>
-      <ion-textarea formControlName="location" type="text" placeholder="e.g:Abbas El-Akkad">
-      </ion-textarea>
-    </ion-item>
+      <ion-item>
+          <ion-label stacked>Location</ion-label>
+          <ion-select formControlName="location" >
+            <ion-option *ngFor="let branch of branches"  >{{branch}}</ion-option>
+          </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Image Download Link</ion-label>
-      <ion-input formControlName="image" type="text" placeholder="">
-      </ion-input>
-    </ion-item>
+      <ion-item>
+          <ion-label stacked>Image Download Link</ion-label>
+          <ion-input formControlName="image" type="text" placeholder="">
+          </ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Date</ion-label>
-      <ion-textarea formControlName="date" type="text" placeholder="dd-mm-yyyy">
-      </ion-textarea>
-    </ion-item>
+      <ion-item>
+          <ion-label stacked>Date</ion-label>
+          <ion-datetime placeholder="" displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY" formControlName="date"></ion-datetime>
+          <!-- <ion-textarea formControlName="date" type="text" placeholder="dd-mm-yyyy">]
+          </ion-textarea> -->
+      </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Time</ion-label>
-      <ion-textarea formControlName="time" type="text" placeholder="e.g:6pm-9pm">
-      </ion-textarea>
-    </ion-item>
+      <ion-item>
+          <ion-label stacked>Time</ion-label>
+          <!-- <ion-textarea formControlName="time" type="text" placeholder="e.g:6pm-9pm">
+          </ion-textarea> -->
+          <ion-select formControlName="time">
+              <ion-option value="9AM-12PM">9 AM - 12 PM</ion-option>
+              <ion-option value="12PM-3PM">12 PM - 3 PM</ion-option>
+              <ion-option value="3PM-6PM">3 PM - 6 PM</ion-option>
+              <ion-option value="6PM-9PM">6 PM - 9 PM</ion-option>
+              <ion-option value="9PM-12AM">9 PM - 12 AM</ion-option>
+          </ion-select>
+      </ion-item>
 
-    
 
 
-    <button ion-button block type="submit" >
-    <!-- [disabled]="!createEventForm.valid" -->
-    
-      Add Event
-    </button>
+
+      <button ion-button block type="submit">
+          <!-- [disabled]="!createEventForm.valid" -->
+
+          Add Event
+      </button>
   </form>
 </ion-content>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from "angularfire2/firestore";
 import { Event } from '../../models/event.interface';
 import { UserProvider } from '../../providers/user/user';
-
+import {locations} from '../../models/locations.interface';
 /*
   Generated class for the DatabaseProvider provider.
 
@@ -65,4 +65,14 @@ export class DatabaseProvider {
                 merge: true
             })
     }
+
+    getLocationsList():AngularFirestoreCollection<locations>{
+        return this.firestore.collection('restaurants');
+    }
+
+    getLocationBranches(s:string):AngularFirestoreCollection<locations>{
+       // console.log(s);
+        return this.firestore.collection('restaurants',ref =>ref.where('name','==', s));
+    }
+
 }

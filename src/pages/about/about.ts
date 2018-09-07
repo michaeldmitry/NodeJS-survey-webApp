@@ -15,10 +15,10 @@ export class AboutPage {
   }
 
   ionViewDidLoad(){
-    console.log('my Events');
-    this.myEventList=this.databaseService.getEventsList().valueChanges();
-    this.myEventList.subscribe((s)=>{
-      console.log(s);
-    })
+    // console.log('my Events');
+    // this.myEventList=this.databaseService.getEventsList().valueChanges();
+    // this.myEventList.subscribe((s)=>{
+    //   console.log(s);
+    //})
   }
 }

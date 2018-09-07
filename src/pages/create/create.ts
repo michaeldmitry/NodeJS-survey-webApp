@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , Loading, LoadingController, AlertController, Alert} from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import {DatabaseProvider} from '../../providers/database/database';
+import {locations} from '../../models/locations.interface';
+import { Observable } from 'rxjs';
+ 
 /**
  * Generated class for the CreatePage page.
  *
@@ -16,7 +19,10 @@ import {DatabaseProvider} from '../../providers/database/database';
 })
 export class CreatePage {
   public createEventForm: FormGroup;
-
+  public locationsList:Observable<locations[]>;
+  public locationBranches:Observable<locations[]>;
+  public restaurant;
+  public branches:Array<any>;
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
     public alertCtrl: AlertController, public navParams: NavParams,public formBuilder: FormBuilder, public databaseService:DatabaseProvider
   ) {
@@ -29,9 +35,20 @@ export class CreatePage {
 
   });
   }
-
+pickLocation(){
+ // console.log(this.restaurant);
+  this.locationBranches=this.databaseService.getLocationBranches(this.restaurant).valueChanges();
+  this.locationBranches.subscribe((s)=>{
+    s.forEach((g)=>{
+         this.branches=g.locations;
+        })
+  })
+}
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatePage');
+    this.locationsList=this.databaseService.getLocationsList().valueChanges();
+    
+   
   }
 
   createEvent(){

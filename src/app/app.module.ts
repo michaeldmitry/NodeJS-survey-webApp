@@ -20,6 +20,7 @@ import {MyEventsPage} from '../pages/my-events/my-events';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {CreatePage} from '../pages/create/create';
 import {CreatePageModule} from '../pages/create/create.module';
+import { PopoverComponent } from '../components/popover/popover';
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyCS2Uehu5QaikEKWRtpv__Z05Dq6oEbiXA",
@@ -38,6 +39,7 @@ var config = {
     TabsPage,
     LoginPage,
     MyEventsPage,
+    PopoverComponent
    // CreatePage
   ],
   imports: [
@@ -60,6 +62,7 @@ var config = {
     TabsPage,
     LoginPage,
     MyEventsPage,
+    PopoverComponent
   ],
   providers: [
     StatusBar,
