@@ -1,5 +1,5 @@
-<ion-header>
-    <ion-navbar color="primary">
+<!-- <ion-header>
+    <ion-navbar color="black">
         <ion-title>
             My Events
         </ion-title>
@@ -11,7 +11,6 @@
 
         <ion-item-sliding #item *ngFor="let event of myEvents | async">
             <ion-item *ngIf="event.user == userId && event.done == false">
-                <!-- show only the events that are assigned to that user and the uncompleted ones -->
                 <ion-label>
                     <h3 item-start>{{event.name}}</h3>
                     <h3 item-end>
@@ -31,4 +30,74 @@
             </ion-item-options>
         </ion-item-sliding>
     </ion-list>
-</ion-content>
+</ion-content> -->
+
+<ion-header>
+        <ion-navbar color="black">
+            <ion-title>
+                My Events
+            </ion-title>
+        </ion-navbar>
+    </ion-header>
+    
+    <ion-content>
+        <div padding>
+            <ion-segment [(ngModel)]="eventsType">
+                <ion-segment-button value="current">
+                    Current
+                </ion-segment-button>
+                <ion-segment-button value="history">
+                    History
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+        <div [ngSwitch]="eventsType">
+            <ion-list *ngSwitchCase="'current'">
+                <ion-item-sliding #item *ngFor="let event of myEvents | async">
+                    <ion-item >
+                        <!-- show only the events that are assigned to that user and the uncompleted ones -->
+                        <ion-thumbnail item-left>
+                            <img [src]="event.image" class="object-fit">
+                        </ion-thumbnail>
+                        <p text-wrap><b>{{ event.name }}</b></p>
+                        <ion-note>
+                            <p>{{ event.location }}</p>
+                        </ion-note>
+                        <ion-note>
+                            <p>{{ event.date }}</p>
+                        </ion-note>
+                        <ion-note>
+                            <p>{{ event.time }}</p>
+                        </ion-note>
+                    </ion-item>
+                    <ion-item-options side="left">
+                        <button ion-button color="danger" (click)="notYet(event.id)">
+                            Undone
+                        </button>
+                    </ion-item-options>
+                    <ion-item-options side="right">
+                        <button class="ApproveButton" ion-button (click)="finished(event.id)"> Done</button>
+                    </ion-item-options>
+                </ion-item-sliding>
+            </ion-list>
+    
+            <ion-list *ngSwitchCase="'history'">
+                <ion-item *ngFor="let event of previousEventList | async">
+                        <!-- show only the events that are completed -->
+                        <ion-thumbnail item-left>
+                            <img [src]="event.image" class="object-fit">
+                        </ion-thumbnail>
+                        <p text-wrap><b>{{ event.name }}</b></p>
+                        <ion-note>
+                            <p>{{ event.location }}</p>
+                        </ion-note>
+                        <ion-note>
+                            <p>{{ event.date }}</p>
+                        </ion-note>
+                        <ion-note>
+                            <p>{{ event.time }}</p>
+                        </ion-note>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>

@@ -29,7 +29,7 @@ export class HomePage {
         // console.log('Events');
         this.user = this.userService.getUserName();
         this.userId = this.userService.getUserId();
-        // console.log(this.user, '=>', this.userId);
+         console.log(this.user, '=>', this.userId);
         this.eventList = this.databaseService.getUnassignedEventsList().valueChanges(); //Get all the events' details
         loading.dismiss();
     }
@@ -71,7 +71,5 @@ export class HomePage {
        
     }
 
-    goToCreatePage(): void {
-        this.navCtrl.push('CreatePage');
-    }
+   
 }

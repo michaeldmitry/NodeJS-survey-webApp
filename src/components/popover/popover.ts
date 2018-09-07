@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { NavController } from 'ionic-angular';
+import {CreatePage} from '../../pages/create/create';
+import {AddLocationPage} from '../../pages/add-location/add-location';
 /**
  * Generated class for the PopoverComponent component.
  *
@@ -14,9 +16,17 @@ export class PopoverComponent {
 
   text: string;
 
-  constructor() {
+  constructor(public navCtrl:NavController) {
     console.log('Hello PopoverComponent Component');
     this.text = 'Hello World';
   }
 
+  goToCreatePage(){
+    
+      this.navCtrl.push(CreatePage);
+  }
+
+  goToAddLocationPage(){
+      this.navCtrl.push(AddLocationPage);
+  }
 }

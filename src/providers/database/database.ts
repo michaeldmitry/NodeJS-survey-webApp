@@ -44,10 +44,15 @@ export class DatabaseProvider {
     getAssignedEventsList(): AngularFirestoreCollection<Event> {
         var userId = this.userService.getUserId();
         return this.firestore.collection('events', ref =>
-            ref.where('user', '==', userId)
+            ref.where('user', '==', userId).where('done','==',false)
         );
     }
-
+    getPreviousAssignedEventsList(): AngularFirestoreCollection<Event> {
+        var userId = this.userService.getUserId();
+        return this.firestore.collection('events', ref =>
+            ref.where('user', '==', userId).where('done','==',true)
+        );
+    }
     undoneEvent(id) {
         this.firestore.collection('events').doc(id).set({
             user: ''
@@ -75,4 +80,14 @@ export class DatabaseProvider {
         return this.firestore.collection('restaurants',ref =>ref.where('name','==', s));
     }
 
+    checkForLocation(s:string){
+        return this.firestore.collection('restaurants').ref.where('name','==', s).get();
+    }
+
+    addToExistingLocation(branch:string, id:string,s:Array<any>):Promise<void>{
+          return  this.firestore.collection('restaurants').doc(id).update({
+                locations:s,
+              //  locations:[branch]
+            })
+    }
 }

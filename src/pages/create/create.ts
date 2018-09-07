@@ -23,6 +23,8 @@ export class CreatePage {
   public locationBranches:Observable<locations[]>;
   public restaurant;
   public branches:Array<any>;
+  public locationLogo;
+
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
     public alertCtrl: AlertController, public navParams: NavParams,public formBuilder: FormBuilder, public databaseService:DatabaseProvider
   ) {
@@ -41,6 +43,7 @@ pickLocation(){
   this.locationBranches.subscribe((s)=>{
     s.forEach((g)=>{
          this.branches=g.locations;
+         this.locationLogo=g.logo;
         })
   })
 }
