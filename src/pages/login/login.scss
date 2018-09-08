@@ -1,3 +1,67 @@
-page-login {
 
-}
+.socialLogin {
+    float: left;
+    width: 100%;
+    text-align: center;
+  }
+  .facebook{
+    background-color: #3b5998;;
+  }
+  .sepretor-or {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  .sepretor-or p {
+    color: white  ;
+    font-size: 16px;
+    text-transform: lowercase;
+  }
+  .sepretor-or p::before,
+  .sepretor-or p::after {
+    float: left;
+    width: -webkit-calc(48% - 10px);
+    width: -moz-calc(48% - 10px);
+    width: calc(48% - 10px);
+    display: inline-block;
+    height: 1px;
+    margin-top: 8px;
+    background-image: url('../assets/imgs/seprator.png');
+    background-repeat: repeat;
+    content: '';
+  }
+  .sepretor-or p::after {
+    float: right;
+  }
+  .bg{
+    background-image: url('../assets/imgs/bg.jpg');
+
+  }
+  .container-logo {
+    display: inline-block;
+    width: 100%;
+    margin: 20px 0;
+    img {
+      max-width: 250px;
+    }
+  }
+  .container-bottom {
+   /// @include inline-flex;
+    //@include flex-wrap(wrap);
+    //@include align-self(flex-end);
+  }
+
+  .list-md, .list-ios {
+    margin:0 !important;
+  }
+  .list {
+    padding:0 !important;
+  }
+  .form-bottom-text {
+    display: inline-block;
+    width: 100%;
+  }
+  .form-bottom-text label,
+  a {
+    color: white;
+  }
