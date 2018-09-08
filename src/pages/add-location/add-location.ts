@@ -54,7 +54,12 @@ export class AddLocationPage {
           })
         })
       })
-
+    }else{
+      this.databaseService.createLocation(name,branch,logo,id).then(()=>{
+        loading.dismiss().then(()=>{
+          this.navCtrl.pop();
+        })
+      })
     }
     })
   }

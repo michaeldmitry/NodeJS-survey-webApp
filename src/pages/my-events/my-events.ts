@@ -72,15 +72,16 @@
 //         return Math.round(difference_ms / one_day);
 //     }
 // }
-import { Component } from '@angular/core';
+import { Component ,ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database';
 import { Observable } from 'rxjs';
 import { Event } from '../../models/event.interface';
-import { LoadingController, AlertController } from 'ionic-angular';
+import { LoadingController, AlertController ,Segment} from 'ionic-angular';
 import Moment from 'moment';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { UserProvider } from '../../providers/user/user';
+import { ChangeDetectorRef } from '@angular/core';        
 
 /**
  * Generated class for the MyEventsPage page.
@@ -98,11 +99,20 @@ export class MyEventsPage {
     public myEvents: Observable<Event[]>;
     public previousEventList: Observable<Event[]>;
     public userId;
-    eventsType = "current";
-    constructor(public userService: UserProvider, public inapp: InAppBrowser, public loadingctrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, public databaseService: DatabaseProvider) {
-        this.userId = userService.getUserId();
-    }
+    public eventsType='current';
 
+  
+    constructor(private cf: ChangeDetectorRef,public userService: UserProvider, public inapp: InAppBrowser, public loadingctrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, public databaseService: DatabaseProvider) {
+        this.userId = userService.getUserId();
+    
+    }
+    onSegmentChanged(obj)
+    {        
+      this.cf.detectChanges();
+      console.log(this.eventsType);
+      this.myEvents = this.databaseService.getAssignedEventsList().valueChanges();
+      this.previousEventList = this.databaseService.getPreviousAssignedEventsList().valueChanges(); //Get all the events' details
+    } 
     ionViewDidEnter() {
         const loading = this.loadingctrl.create();
         loading.present();
@@ -131,7 +141,7 @@ export class MyEventsPage {
             const options: InAppBrowserOptions = {
                 zoom: 'no'
             }
-            const browser = this.inapp.create('https://www.google.com/', '_system', options); //should be the survey's link
+            const browser = this.inapp.create('https://goo.gl/forms/NWaeYnCv7Ot8Z4aR2', '_system', options); //should be the survey's link
         })
     }
 

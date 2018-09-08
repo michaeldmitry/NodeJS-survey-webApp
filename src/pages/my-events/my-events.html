@@ -41,12 +41,12 @@
     </ion-header>
     
     <ion-content>
-        <div padding>
-            <ion-segment [(ngModel)]="eventsType">
-                <ion-segment-button value="current">
+        <div >
+            <ion-segment [(ngModel)]="eventsType" (ionChange)=onSegmentChanged($event) color="primary">
+                <ion-segment-button value="current"  >
                     Current
                 </ion-segment-button>
-                <ion-segment-button value="history">
+                <ion-segment-button value="history" >
                     History
                 </ion-segment-button>
             </ion-segment>
@@ -55,7 +55,6 @@
             <ion-list *ngSwitchCase="'current'">
                 <ion-item-sliding #item *ngFor="let event of myEvents | async">
                     <ion-item >
-                        <!-- show only the events that are assigned to that user and the uncompleted ones -->
                         <ion-thumbnail item-left>
                             <img [src]="event.image" class="object-fit">
                         </ion-thumbnail>
@@ -83,7 +82,6 @@
     
             <ion-list *ngSwitchCase="'history'">
                 <ion-item *ngFor="let event of previousEventList | async">
-                        <!-- show only the events that are completed -->
                         <ion-thumbnail item-left>
                             <img [src]="event.image" class="object-fit">
                         </ion-thumbnail>

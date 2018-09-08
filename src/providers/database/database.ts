@@ -34,6 +34,16 @@ export class DatabaseProvider {
         })
     }
 
+    createLocation(name:string,branch:string,logo:string,id:string):Promise<void>{
+        console.log(name);
+           return this.firestore.collection('restaurants').doc(id).set({
+               name:name,
+               locations:[branch],
+               logo:logo,
+               id:id
+           })
+    }
+
     getUnassignedEventsList(): AngularFirestoreCollection<Event> {
 
         return this.firestore.collection('events', ref =>
