@@ -14,6 +14,20 @@
 
 
 <ion-content padding>
+  <ion-item>
+<ion-label floating >Email Address</ion-label>
+<ion-input type="text" [(ngModel)]="userEmail"></ion-input>
+</ion-item>
 
-  <button ion-button (click)="loginWithFacebook()"> Login With Facebook</button>
+<ion-item>
+
+<ion-label floating>Password</ion-label>
+<ion-input type="password" [(ngModel)]="userPassword"></ion-input>
+</ion-item>
+
+<button ion-button (click)="login(userEmail,userPassword)"> Login</button>
+<button ion-button color="light" (click)="register()"> Register</button>
+
+<p> Or</p>
+  <button ion-button round (click)="loginWithFacebook()"> Login With Facebook</button>
 </ion-content>

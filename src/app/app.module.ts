@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MyEventsPage} from '../pages/my-events/my-events';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {CreatePage} from '../pages/create/create';
+import {RegisterPage} from '../pages/register/register';
 import {CreatePageModule} from '../pages/create/create.module';
 import { PopoverComponent } from '../components/popover/popover';
 // Initialize Firebase
@@ -41,6 +42,7 @@ var config = {
     LoginPage,
     AddLocationPage,
     MyEventsPage,
+    RegisterPage,
     PopoverComponent
    // CreatePage
   ],
@@ -63,6 +65,7 @@ var config = {
     HomePage,
     TabsPage,
     LoginPage,
+    RegisterPage,
     AddLocationPage,
     MyEventsPage,
     PopoverComponent

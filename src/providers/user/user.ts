@@ -10,8 +10,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserProvider {
 
-  public user:string;
-  public userID:string;
+  private user:string;
+  private userID:string;
+
   constructor() {
     console.log('Hello UserProvider Provider');
   }
@@ -21,6 +22,9 @@ export class UserProvider {
       this.userID=id;
   }
 
+  setNameTemp(name:string){
+    this.user=name;
+  }
   getUserName(){
     return this.user;
   }
