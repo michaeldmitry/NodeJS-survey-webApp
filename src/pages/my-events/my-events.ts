@@ -108,10 +108,15 @@ export class MyEventsPage {
     }
     onSegmentChanged(obj)
     {        
+        const loading = this.loadingctrl.create();
+        loading.present();
       this.cf.detectChanges();
       console.log(this.eventsType);
-      this.myEvents = this.databaseService.getAssignedEventsList().valueChanges();
-      this.previousEventList = this.databaseService.getPreviousAssignedEventsList().valueChanges(); //Get all the events' details
+        if(this.eventsType=='current'){
+            this.myEvents = this.databaseService.getAssignedEventsList().valueChanges();}
+     // this.previousEventList = this.databaseService.getPreviousAssignedEventsList().valueChanges(); //Get all the events' details
+      loading.dismiss();
+
     } 
     ionViewDidEnter() {
         const loading = this.loadingctrl.create();

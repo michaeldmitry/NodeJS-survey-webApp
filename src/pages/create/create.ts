@@ -61,7 +61,7 @@ pickLocation(){
 
     const name=this.createEventForm.value.name;
     const location= this.createEventForm.value.location;
-    const image=this.createEventForm.value.image;
+     const image:string=this.createEventForm.value.image.replace(/\s+/g, ''); //remove whitespaces
     const date=this.createEventForm.value.date;
     const time=this.createEventForm.value.time;
     const id= Math.floor(Date.now() / 1000) + "";
