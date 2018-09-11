@@ -1,18 +1,24 @@
 <ion-header>
   <ion-navbar color="dark">
-    <ion-title>Events</ion-title>
-    <ion-buttons end>
+
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title center>Events</ion-title>
+    <!-- <ion-buttons end>
       <button ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="arrow-dropdown"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
 <ion-content >
     <!-- <p>{{userId}}</p> -->
   <ion-list>
-    <ion-item *ngFor="let event of eventList | async" (click)="pickSlot(event.id)">
+    <ion-item *ngFor="let event of eventList | async" (click)="pickSlot(event.id)" >
       <ion-thumbnail item-left>
           <img [src]="event.image" class="object-fit">
           

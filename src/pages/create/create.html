@@ -16,7 +16,6 @@
 <ion-content padding>
   <form [formGroup]="createEventForm" (submit)="createEvent()" novalidate>
       <!-- <ion-item (click)="takeImage()">
-      <ion-icon name="camera"></ion-icon>
       <img [src]="snagImageURL" *ngIf="snagImageURL"/>
   </ion-item> -->
 
@@ -35,15 +34,20 @@
       </ion-item>
 
       <ion-item>
-          <ion-label stacked>Image Download Link</ion-label>
-          <ion-select formControlName="image" >
+          <ion-label stacked class="image">Restaurant Logo</ion-label>
+          <!-- <ion-select formControlName="image" >
               <ion-option> {{locationLogo}}</ion-option>
-          </ion-select>
+          </ion-select> -->
+          <!-- <ion-icon name="camera"></ion-icon> -->
+          <ion-thumbnail item-right>
+            <img [src]="locationLogo" *ngIf="locationLogo" class="object-fit"/>
+        </ion-thumbnail>
+
       </ion-item>
 
       <ion-item>
           <ion-label stacked>Date</ion-label>
-          <ion-datetime placeholder="" displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY" formControlName="date"></ion-datetime>
+          <ion-datetime placeholder="" displayFormat="DD-MM-YYYY"  [min]="minDate" [max] ="2020" pickerFormat="DD MMMM YYYY" formControlName="date"></ion-datetime>
           <!-- <ion-textarea formControlName="date" type="text" placeholder="dd-mm-yyyy">]
           </ion-textarea> -->
       </ion-item>

@@ -1,1 +1,24 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+
+    <ion-header>
+        <ion-toolbar color='dark'>
+            <ion-title>
+                Side Menu
+            </ion-title>
+        </ion-toolbar>
+        </ion-header>
+        <ion-content padding>
+            <ion-list no-lines>
+
+                <button menuClose ion-item detail-push *ngFor="let p of pages" (click)="openPage(p)">
+                    {{p.title}}
+                    <ion-icon [name]="p.icon" item-start></ion-icon>
+                </button>
+               
+                </ion-list>
+            </ion-content>
+</ion-menu>
+
+
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled='false'></ion-nav>

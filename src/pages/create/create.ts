@@ -24,7 +24,7 @@ export class CreatePage {
   public restaurant;
   public branches:Array<any>;
   public locationLogo;
-
+  public minDate;
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
     public alertCtrl: AlertController, public navParams: NavParams,public formBuilder: FormBuilder, public databaseService:DatabaseProvider
   ) {
@@ -36,6 +36,8 @@ export class CreatePage {
       time: ["", Validators.required]
 
   });
+  this.minDate=new Date().toISOString();
+  console.log(this.minDate)
   }
 pickLocation(){
  // console.log(this.restaurant);
@@ -61,7 +63,7 @@ pickLocation(){
 
     const name=this.createEventForm.value.name;
     const location= this.createEventForm.value.location;
-     const image:string=this.createEventForm.value.image.replace(/\s+/g, ''); //remove whitespaces
+     const image:string=this.locationLogo;//remove whitespaces
     const date=this.createEventForm.value.date;
     const time=this.createEventForm.value.time;
     const id= Math.floor(Date.now() / 1000) + "";
