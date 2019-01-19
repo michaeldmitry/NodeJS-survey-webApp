@@ -90,7 +90,10 @@ import { ChangeDetectorRef } from '@angular/core';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+    name:'events',
+    segment:'myEvents'
+})
 @Component({
     selector: 'page-my-events',
     templateUrl: 'my-events.html',

@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, IonicPageModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -23,6 +23,9 @@ import {CreatePage} from '../pages/create/create';
 import {RegisterPage} from '../pages/register/register';
 import {CreatePageModule} from '../pages/create/create.module';
 import { PopoverComponent } from '../components/popover/popover';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import {Deeplinks} from '@ionic-native/deeplinks';
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyCS2Uehu5QaikEKWRtpv__Z05Dq6oEbiXA",
@@ -54,7 +57,9 @@ var config = {
     AngularFirestoreModule,
     HttpModule,
     HttpClientModule,
-    CreatePageModule
+    CreatePageModule,
+    IonicPageModule.forChild(HomePage)
+
 
   ],
   bootstrap: [IonicApp],
@@ -74,8 +79,11 @@ var config = {
     StatusBar,
     SplashScreen,
     InAppBrowser,
+    Deeplinks,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
+    Camera,
+    BarcodeScanner,
     DatabaseProvider
   ]
 })

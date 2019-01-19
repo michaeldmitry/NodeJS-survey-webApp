@@ -5,8 +5,8 @@
       <button ion-button icon-only menuToggle>
         <ion-icon name='menu'></ion-icon>
       </button>
-    </ion-buttons>
-    <ion-title center>Events</ion-title>
+    </ion-buttons> 
+    <ion-title center>Home Page</ion-title>
     <!-- <ion-buttons end>
       <button ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="arrow-dropdown"></ion-icon>
@@ -29,5 +29,39 @@
       <ion-note> <p>{{ event.date }}</p></ion-note>
       <ion-note><p>{{ event.time }}</p></ion-note>
     </ion-item>
-  </ion-list>
+  </ion-list> 
+<!-- <div>
+  <ion-input style="background-color: gray" type="text" [(ngModel)]="encodedText"></ion-input>
+  <button ion-button block (click)="encode()">Encode</button>
+</div>
+
+<div>
+  <button ion-button block (click)="scan()">Scan</button>
+  <div *ngIf="scannedData.text">
+    <label>Your bar code is</label>
+    <br>
+    <span>{{scannedData.text}}</span>
+  </div>
+</div> -->
+
+  <!-- <ion-buttons middle>
+    <button ion-button (click)="takePhoto()">
+      Car scanner
+    </button>
+  </ion-buttons>  
+
+  <p> <img src="{{myPhoto}}"> </p> -->
+
+  <!-- <ion-buttons middle>
+      <button ion-button >
+        Followed
+      </button>
+    </ion-buttons> -->
+
+    <!-- <ion-buttons middle>
+        <button ion-button >
+          messanger
+        </button>
+      </ion-buttons> -->
+
 </ion-content>

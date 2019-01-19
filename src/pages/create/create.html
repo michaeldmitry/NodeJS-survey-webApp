@@ -20,30 +20,29 @@
   </ion-item> -->
 
       <ion-item>
-          <ion-label stacked>Name</ion-label>
+          <ion-label stacked>Restaurant Name</ion-label>
           <ion-select (ionChange)="pickLocation()" [(ngModel)]="restaurant" formControlName="name" >
             <ion-option *ngFor="let location of locationsList |async" value="{{location.name}}">{{location.name}}</ion-option>
           </ion-select>
       </ion-item>
 
       <ion-item>
-          <ion-label stacked>Location</ion-label>
+          <ion-label stacked>Branch</ion-label>
           <ion-select formControlName="location" >
             <ion-option *ngFor="let branch of branches"  >{{branch}}</ion-option>
           </ion-select>
       </ion-item>
 
-      <ion-item>
+   <ion-item>
           <ion-label stacked class="image">Restaurant Logo</ion-label>
           <!-- <ion-select formControlName="image" >
               <ion-option> {{locationLogo}}</ion-option>
           </ion-select> -->
-          <!-- <ion-icon name="camera"></ion-icon> -->
+         <ion-icon name="camera"></ion-icon> 
           <ion-thumbnail item-right>
             <img [src]="locationLogo" *ngIf="locationLogo" class="object-fit"/>
         </ion-thumbnail>
-
-      </ion-item>
+      </ion-item> 
 
       <ion-item>
           <ion-label stacked>Date</ion-label>
@@ -54,23 +53,22 @@
 
       <ion-item>
           <ion-label stacked>Time</ion-label>
-          <!-- <ion-textarea formControlName="time" type="text" placeholder="e.g:6pm-9pm">
+           <!-- <ion-textarea formControlName="time" type="text" placeholder="e.g:6pm-9pm">
           </ion-textarea> -->
-          <ion-select formControlName="time">
+           <ion-select formControlName="time">
               <ion-option value="9AM-12PM">9 AM - 12 PM</ion-option>
               <ion-option value="12PM-3PM">12 PM - 3 PM</ion-option>
               <ion-option value="3PM-6PM">3 PM - 6 PM</ion-option>
               <ion-option value="6PM-9PM">6 PM - 9 PM</ion-option>
               <ion-option value="9PM-12AM">9 PM - 12 AM</ion-option>
           </ion-select>
-      </ion-item>
+      </ion-item> 
 
 
 
 
       <button ion-button block color="dark" type="submit">
           <!-- [disabled]="!createEventForm.valid" -->
-
           Add Event
       </button>
   </form>
