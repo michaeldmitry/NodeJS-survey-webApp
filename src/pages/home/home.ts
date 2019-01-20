@@ -10,20 +10,28 @@ import { CreatePage } from '../../pages/create/create';
 import { PopoverComponent } from '../../components/popover/popover';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { BarcodeScanner ,BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
+
 
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
 })
 export class HomePage {
+    public myPhoto:any;
     public user: string;
     public userId: string;
     public eventList: Observable<Event[]>;
     public logoList:Array<any>;
+
+
+   
+
     //public ref: AngularFirestoreCollection<Event>=this.firestore.collection('events');
     constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public userService: UserProvider
         , public databaseService: DatabaseProvider, public fire: AngularFirestore, public alrtCtrl:AlertController,
-        public popoverCtrl:PopoverController
+        public popoverCtrl:PopoverController, private camera:Camera,public scanner:BarcodeScanner
     ) { }
 
     ionViewDidEnter() {
