@@ -17,5 +17,5 @@ pipelines:
           - npm install
           - npm run build
           # - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:master
-          - ionic login
+          # - ionic login
           - ionic upload --deploy=dev --note="$BITBUCKET_COMMIT"
