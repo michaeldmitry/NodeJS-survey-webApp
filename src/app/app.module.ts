@@ -28,12 +28,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import {Deeplinks} from '@ionic-native/deeplinks';
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyCS2Uehu5QaikEKWRtpv__Z05Dq6oEbiXA",
-  authDomain: "servebetter-4ad7f.firebaseapp.com",
-  databaseURL: "https://servebetter-4ad7f.firebaseio.com",
-  projectId: "servebetter-4ad7f",
-  storageBucket: "servebetter-4ad7f.appspot.com",
-  messagingSenderId: "993187465205"
+  //config is removed for security reasons
 };
 @NgModule({
   declarations: [
